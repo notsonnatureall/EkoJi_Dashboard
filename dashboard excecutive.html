@@ -1,0 +1,231 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EkoJI Analytics</title>
+    <!-- Material Symbols -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Design System Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#1b1b1b",
+              "on-primary-container": "#848484",
+              "tertiary-container": "#1b1b1b",
+              "inverse-primary": "#c6c6c6",
+              "on-error": "#ffffff",
+              error: "#ba1a1a",
+              surface: "#f9f9f9",
+              "surface-container-high": "#e8e8e8",
+              "on-tertiary-fixed": "#1b1b1b",
+              "surface-variant": "#e2e2e2",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#848484",
+              "surface-bright": "#f9f9f9",
+              "on-primary-fixed-variant": "#474747",
+              "surface-container-highest": "#e2e2e2",
+              "on-primary": "#ffffff",
+              "outline-variant": "#cfc4c5",
+              background: "#f9f9f9",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#1b1b1b",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "primary-fixed": "#e2e2e2",
+              "inverse-surface": "#303030",
+              "surface-dim": "#dadada",
+              "on-primary-fixed": "#1b1b1b",
+              secondary: "#00696c",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#4c4546",
+              "on-surface": "#1b1b1b",
+              "on-secondary-fixed-variant": "#004f51",
+              "surface-container-low": "#f3f3f3",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container": "#eeeeee",
+              "primary-fixed-dim": "#c6c6c6",
+              outline: "#7e7576",
+              primary: "#000000",
+              "secondary-fixed-dim": "#56d9dd",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#73f3f6",
+              tertiary: "#000000",
+              "on-secondary-fixed": "#002021",
+              "secondary-fixed": "#76f5f9",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-tint": "#5e5e5e",
+              "on-secondary-container": "#006e71",
+              "on-tertiary-fixed-variant": "#474747",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "container-padding": "32px",
+              base: "8px",
+              gutter: "24px",
+              "margin-mobile": "16px",
+              "margin-desktop": "40px",
+            },
+            fontFamily: {
+              "body-md": ["Inter", "sans-serif"],
+              "label-sm": ["Inter", "sans-serif"],
+              "headline-lg": ["Inter", "sans-serif"],
+              "headline-lg-mobile": ["Inter", "sans-serif"],
+              "headline-md": ["Inter", "sans-serif"],
+              "display-kpi": ["Inter", "sans-serif"],
+            },
+            fontSize: {
+              "body-md": ["14px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "headline-md": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-kpi": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-surface-container text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary"
+  >
+    <!-- Application Shell Wrapper -->
+    <div class="flex min-h-screen w-full">
+      <!-- Shared Component: SideNavBar -->
+      <nav
+        class="fixed left-0 top-0 h-full w-[280px] bg-surface dark:bg-surface-container-low border-r border-surface-variant dark:border-outline-variant flex flex-col py-base px-gutter z-50"
+      >
+        <!-- Brand Header -->
+        <div class="pt-8 pb-12">
+          <h1
+            class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight"
+          >
+            EkoJI
+          </h1>
+          <p
+            class="font-label-sm text-label-sm text-on-surface-variant mt-1 uppercase tracking-widest"
+          >
+            Data Intelligence
+          </p>
+        </div>
+        <!-- Navigation Tabs -->
+        <div class="flex-1 flex flex-col gap-2">
+        <!-- Executive (Active) -->
+        <a
+            class="flex items-center gap-3 p-3 rounded-lg text-primary dark:text-inverse-primary font-bold border-r-2 border-primary dark:border-inverse-primary bg-surface-container-high dark:bg-surface-container-highest transition-colors duration-200 cursor-pointer transition-all duration-150"
+            href="#"
+        >
+            <span
+            class="material-symbols-outlined"
+            style='font-variation-settings: "FILL" 1'
+            >
+            dashboard
+            </span>
+            <span class="font-label-sm text-label-sm">Executive</span>
+        </a>
+
+        <!-- Analytics (Inactive) -->
+        <a
+            class="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 cursor-pointer transition-all duration-150"
+            href="./dashboard.html"
+        >
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-sm text-label-sm">Analytics</span>
+        </a>
+        </div>
+        <!-- Footer Section -->
+        <div class="mt-auto border-t border-surface-variant pt-4 pb-6">
+          <a
+            class="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 cursor-pointer transition-all duration-150"
+            href="#"
+          >
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="font-label-sm text-label-sm">Profile</span>
+          </a>
+        </div>
+      </nav>
+      <!-- Main Content Canvas -->
+      <div class="flex-1 ml-[280px] flex flex-col min-h-screen">
+        <!-- Shared Component: TopAppBar -->
+        <header
+          class="bg-surface dark:bg-surface-container-low border-b border-surface-variant dark:border-outline-variant flex justify-between items-center h-16 px-margin-desktop sticky top-0 z-40"
+        >
+          <h2
+            class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight"
+          >
+            Executive Summary
+          </h2>
+          <div class="flex items-center gap-base">
+            <button
+              class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:opacity-90 transition-opacity flex items-center justify-center rounded-full hover:bg-surface-container"
+            >
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button
+              class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:opacity-90 transition-opacity flex items-center justify-center rounded-full hover:bg-surface-container"
+            >
+              <span class="material-symbols-outlined">settings</span>
+            </button>
+          </div>
+        </header>
+        <!-- Dashboard Content -->
+        <main
+          class="flex-1 p-container-padding overflow-y-auto bg-surface-container"
+        >
+            <iframe
+              src="http://103.183.92.158:8082/public/dashboard/3039c2a9-ef9a-4c74-91f2-2ef0b0e98fee"
+              frameborder="0"
+              class="w-full flex-1 min-h-[800px] rounded-xl shadow-sm border border-surface-variant bg-surface"
+              allowtransparency
+          ></iframe>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

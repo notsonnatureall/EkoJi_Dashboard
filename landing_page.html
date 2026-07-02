@@ -1,0 +1,527 @@
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EkoJI - Public Data Intelligence</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#56d9dd",
+              error: "#ba1a1a",
+              "on-tertiary-container": "#848484",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#76f5f9",
+              tertiary: "#000000",
+              "on-primary-fixed": "#1b1b1b",
+              "tertiary-container": "#1b1b1b",
+              "primary-fixed-dim": "#c6c6c6",
+              "surface-container": "#eeeeee",
+              "primary-container": "#1b1b1b",
+              "secondary-container": "#73f3f6",
+              "on-surface-variant": "#4c4546",
+              "on-secondary-fixed": "#002021",
+              "inverse-primary": "#c6c6c6",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-variant": "#e2e2e2",
+              "surface-container-high": "#e8e8e8",
+              "on-secondary-container": "#006e71",
+              "surface-bright": "#f9f9f9",
+              primary: "#000000",
+              "outline-variant": "#cfc4c5",
+              "on-background": "#1b1b1b",
+              background: "#f9f9f9",
+              "on-tertiary-fixed": "#1b1b1b",
+              "on-surface": "#1b1b1b",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#848484",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f3f3f3",
+              "on-secondary-fixed-variant": "#004f51",
+              "on-tertiary-fixed-variant": "#474747",
+              "inverse-surface": "#303030",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dadada",
+              surface: "#f9f9f9",
+              "on-tertiary": "#ffffff",
+              outline: "#7e7576",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f1f1f1",
+              secondary: "#00696c",
+              "surface-tint": "#5e5e5e",
+              "surface-container-highest": "#e2e2e2",
+              "primary-fixed": "#e2e2e2",
+              "on-primary-fixed-variant": "#474747",
+              "dashboard-teal": "#43CACE",
+              "dashboard-magenta": "#C9148C",
+              "dashboard-green": "#93D229",
+              "dashboard-orange": "#E7863B",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "margin-desktop": "40px",
+              "container-padding": "32px",
+              base: "8px",
+              "margin-mobile": "16px",
+              gutter: "24px",
+            },
+            fontFamily: {
+              "headline-lg": ["Inter", "sans-serif"],
+              "body-md": ["Inter", "sans-serif"],
+              "headline-md": ["Inter", "sans-serif"],
+              "label-sm": ["Inter", "sans-serif"],
+              "headline-lg-mobile": ["Inter", "sans-serif"],
+              "display-kpi": ["Inter", "sans-serif"],
+            },
+            fontSize: {
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["14px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" },
+              ],
+              "headline-lg-mobile": [
+                "24px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "display-kpi": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #f5f5f0;
+        color: #1b1b1b;
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .flat-card {
+        background-color: #ffffff;
+        border: 1px solid #e6e6e1;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header
+      class="w-full h-16 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline flex items-center shrink-0"
+    >
+      <div
+        class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto"
+      >
+        <div
+          class="text-headline-md font-headline-md font-bold text-primary dark:text-on-surface"
+        >
+          EkoJI
+        </div>
+        <nav class="hidden md:flex items-center gap-8 h-full">
+          <a
+            class="h-full flex items-center text-primary dark:text-on-surface border-b-2 border-primary font-bold hover:opacity-90 transition-opacity duration-200"
+            href="#"
+          >
+            Features
+          </a>
+          <a
+            class="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant font-medium hover:opacity-90 transition-opacity duration-200"
+            href="#"
+          >
+            About
+          </a>
+        </nav>
+        <button
+          class="bg-primary text-on-primary px-4 py-2 rounded font-label-sm text-label-sm hover:opacity-90 transition-opacity duration-200"
+        >
+          <a href="./dashboard excecutive.html">Go to Dashboard</a>
+        </button>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center w-full">
+      <!-- Hero Section -->
+      <section
+        class="w-full max-w-7xl px-margin-desktop py-24 md:py-32 flex flex-col items-start gap-8"
+      >
+        <div class="max-w-3xl">
+          <h1
+            class="text-headline-lg-mobile md:text-display-kpi font-headline-lg-mobile md:font-display-kpi text-primary mb-6"
+          >
+            Satu Platform untuk Kebijakan Berbasis Data.
+          </h1>
+          <p
+            class="text-headline-md font-headline-md text-on-surface-variant mb-10 max-w-2xl font-normal"
+          >
+            EkoJI mengintegrasikan data pelayanan publik untuk intelijen data
+            pemerintah yang presisi dan transparan.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-primary text-on-primary px-8 py-4 rounded font-label-sm text-label-sm hover:opacity-90 transition-opacity duration-200"
+            >
+              Lihat Dashboard
+            </button>
+            <button
+              class="bg-surface-container-lowest text-primary border border-primary px-8 py-4 rounded font-label-sm text-label-sm hover:bg-surface-container-low transition-colors duration-200"
+            >
+              Tentang Proyek
+            </button>
+          </div>
+        </div>
+        <!-- Hero Decorative Graphic (Abstract Data Rep) -->
+        <div
+          class="w-full h-64 md:h-96 mt-12 flat-card rounded-xl p-8 relative overflow-hidden flex items-end"
+        >
+          <!-- Abstract bars representing data -->
+          <div
+            class="absolute bottom-0 left-0 w-full h-full flex items-end gap-2 px-8 opacity-20"
+          >
+            <div class="w-1/6 bg-dashboard-teal h-1/3 rounded-t-sm"></div>
+            <div class="w-1/6 bg-dashboard-magenta h-1/2 rounded-t-sm"></div>
+            <div class="w-1/6 bg-dashboard-green h-3/4 rounded-t-sm"></div>
+            <div class="w-1/6 bg-dashboard-orange h-2/3 rounded-t-sm"></div>
+            <div class="w-1/6 bg-dashboard-teal h-5/6 rounded-t-sm"></div>
+            <div class="w-1/6 bg-primary h-full rounded-t-sm"></div>
+          </div>
+          <!-- Main hero image -->
+          <div
+            class="absolute inset-0 bg-cover bg-center w-full h-full mix-blend-multiply opacity-80"
+            data-alt="A highly abstract, clinical rendering of a sprawling digital network map overlaying a minimalist architectural grid. The scene is bathed in a bright, light-mode off-white light, with sharp, ultra-clean lines connecting nodes. Accents of vibrant cyan, magenta, and bright orange punctuate the stark white and black data structures, conveying a sense of precise, high-density public data intelligence and control."
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBRxDuXvTayFFyu1fF9ZL2jhNWsVeG-o3NTHNY8TFcuBWUJubMConeNlfnIa4ozrP0k_69p3jTQ3qDUHQFb6pIGqg31qwSxY60VukVXt7z1P8EV-99GNzGWvoP2E0meGd5IXDQdFjD8i--1oFN8dxaaBGbR1IuLAj-P_7DR_KMTDFJkYlm7SICjuu8V0GHFoTQ9ykGy92_-3x2R8jrPj53p3cwfvogdGCU3IiT5UKie3HzNdyKnvU9T3PhnFO5py9v0iV6QWsBAlA0&quot;);
+            "
+          ></div>
+        </div>
+      </section>
+      <!-- Problem Section -->
+      <section
+        class="w-full max-w-7xl px-margin-desktop py-20 border-t border-outline-variant"
+      >
+        <div class="mb-12">
+          <h2 class="text-headline-lg font-headline-lg text-primary mb-4">
+            Tantangan Data Publik saat ini.
+          </h2>
+          <p class="text-body-md font-body-md text-on-surface-variant max-w-xl">
+            Mengidentifikasi hambatan utama dalam pengelolaan informasi
+            pemerintahan yang menghambat pelayanan optimal.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="flat-card p-6 rounded-lg flex flex-col gap-4">
+            <div
+              class="w-10 h-10 rounded-full bg-dashboard-teal/10 flex items-center justify-center text-dashboard-teal mb-2"
+            >
+              <span class="material-symbols-outlined">dataset</span>
+            </div>
+            <h3
+              class="text-headline-md font-headline-md text-primary text-base"
+            >
+              Fragmentasi Data
+            </h3>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Data tersebar di berbagai instansi tanpa standar yang seragam,
+              menyulitkan sinkronisasi.
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div class="flat-card p-6 rounded-lg flex flex-col gap-4">
+            <div
+              class="w-10 h-10 rounded-full bg-dashboard-magenta/10 flex items-center justify-center text-dashboard-magenta mb-2"
+            >
+              <span class="material-symbols-outlined">link_off</span>
+            </div>
+            <h3
+              class="text-headline-md font-headline-md text-primary text-base"
+            >
+              Kurangnya Integrasi
+            </h3>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Sistem yang berjalan sendiri-sendiri menyebabkan duplikasi dan
+              inkonsistensi informasi publik.
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div class="flat-card p-6 rounded-lg flex flex-col gap-4">
+            <div
+              class="w-10 h-10 rounded-full bg-dashboard-orange/10 flex items-center justify-center text-dashboard-orange mb-2"
+            >
+              <span class="material-symbols-outlined">trending_down</span>
+            </div>
+            <h3
+              class="text-headline-md font-headline-md text-primary text-base"
+            >
+              Analisis Terhambat
+            </h3>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Proses manual dalam mengumpulkan data memperlambat respons
+              terhadap isu strategis.
+            </p>
+          </div>
+          <!-- Card 4 -->
+          <div class="flat-card p-6 rounded-lg flex flex-col gap-4">
+            <div
+              class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2"
+            >
+              <span class="material-symbols-outlined">blind</span>
+            </div>
+            <h3
+              class="text-headline-md font-headline-md text-primary text-base"
+            >
+              Keputusan Non-Data
+            </h3>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Kebijakan seringkali diambil berdasarkan intuisi, bukan wawasan
+              berbasis bukti empiris.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Features Section -->
+      <section
+        class="w-full bg-surface-container-lowest border-y border-outline-variant py-24"
+      >
+        <div class="max-w-7xl px-margin-desktop mx-auto">
+          <div class="mb-16 md:w-1/2">
+            <h2 class="text-headline-lg font-headline-lg text-primary mb-4">
+              Solusi Intelijen Data.
+            </h2>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Ekosistem terpadu yang merubah raw data menjadi wawasan strategis
+              yang dapat ditindaklanjuti.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Feature 1: Integrasi -->
+            <div
+              class="flat-card p-8 md:p-12 rounded-xl flex flex-col justify-between min-h-[400px] border-none bg-surface"
+            >
+              <div>
+                <span
+                  class="inline-block px-3 py-1 bg-dashboard-teal/10 text-dashboard-teal text-label-sm font-label-sm rounded mb-6"
+                  >INTEGRATION</span
+                >
+                <h3
+                  class="text-headline-md font-headline-md text-primary mb-4 text-2xl"
+                >
+                  Integrasi Lintas OPD
+                </h3>
+                <p
+                  class="text-body-md font-body-md text-on-surface-variant mb-8 max-w-md"
+                >
+                  Menghubungkan silo data antar Organisasi Perangkat Daerah
+                  menjadi satu aliran informasi yang kohesif dan real-time.
+                </p>
+              </div>
+              <div
+                class="w-full h-48 bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden relative"
+              >
+                <div
+                  class="absolute inset-0 bg-cover bg-center w-full h-full opacity-60"
+                  data-alt="A minimalist UI mockup showing data flowing seamlessly between multiple dashboard modules. The background is pristine white with faint grey grid lines. Tiny glowing nodes in vibrant teal and magenta represent data packets traveling along precise paths, illustrating the concept of cross-departmental data integration in a clean, clinical aesthetic."
+                  style="
+                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCzYGfo4FzlzZPmQ7deilVY7wyvfsaoKYQAlnx2GzWkNokEbHTjguV0R5Bg98BzSK6xR42uHqekFI7RoaeeJR8pWe7o7b_yetbN5nzUpgSxIegx24Yi9iVJc0lARXprUO1bBH24FrG-ueqpXhegq8aaYOD0yjvLPZoQPng36deZ5-BtHAauoW7bedPXyWdCXqP2iWuAH_1pvM7x-gsLKviQLibBbWDy0r0k2hQext9v_o_eYRceU4p8LaHeyo_fn9qXCehkSFNioEY&quot;);
+                  "
+                ></div>
+              </div>
+            </div>
+            <!-- Feature 2: Warehouse -->
+            <div
+              class="flat-card p-8 md:p-12 rounded-xl flex flex-col justify-between min-h-[400px] border-none bg-surface"
+            >
+              <div>
+                <span
+                  class="inline-block px-3 py-1 bg-dashboard-magenta/10 text-dashboard-magenta text-label-sm font-label-sm rounded mb-6"
+                  >STORAGE</span
+                >
+                <h3
+                  class="text-headline-md font-headline-md text-primary mb-4 text-2xl"
+                >
+                  Warehouse Ekonomi
+                </h3>
+                <p
+                  class="text-body-md font-body-md text-on-surface-variant mb-8 max-w-md"
+                >
+                  Pusat penyimpanan data makro dan mikro ekonomi yang
+                  dioptimalkan untuk query cepat dan analisis tren jangka
+                  panjang.
+                </p>
+              </div>
+              <div
+                class="w-full h-48 bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden relative p-4 flex items-end justify-around"
+              >
+                <!-- Abstract bar chart -->
+                <div class="w-8 h-[40%] bg-surface-variant rounded-t-sm"></div>
+                <div class="w-8 h-[60%] bg-surface-variant rounded-t-sm"></div>
+                <div
+                  class="w-8 h-[80%] bg-dashboard-magenta/40 rounded-t-sm"
+                ></div>
+                <div
+                  class="w-8 h-[100%] bg-dashboard-magenta rounded-t-sm"
+                ></div>
+                <div class="w-8 h-[70%] bg-surface-variant rounded-t-sm"></div>
+              </div>
+            </div>
+            <!-- Feature 3: Dashboard -->
+            <div
+              class="flat-card p-8 md:p-12 rounded-xl flex flex-col lg:flex-row gap-8 lg:col-span-2 border-none bg-surface"
+            >
+              <div class="lg:w-1/2 flex flex-col justify-center">
+                <span
+                  class="inline-block self-start px-3 py-1 bg-dashboard-orange/10 text-dashboard-orange text-label-sm font-label-sm rounded mb-6"
+                  >VISUALIZATION</span
+                >
+                <h3
+                  class="text-headline-md font-headline-md text-primary mb-4 text-2xl"
+                >
+                  Dashboard Real-time
+                </h3>
+                <p
+                  class="text-body-md font-body-md text-on-surface-variant mb-6"
+                >
+                  Pemantauan metrik kinerja utama secara langsung. Desain datar
+                  tanpa bayangan memprioritaskan keterbacaan data di atas
+                  segalanya, memungkinkan identifikasi anomali secara instan.
+                </p>
+                <a
+                  class="text-label-sm font-label-sm text-primary flex items-center gap-2 hover:opacity-70 transition-opacity w-fit"
+                  href="#"
+                >
+                  Jelajahi Dashboard
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_forward</span
+                  >
+                </a>
+              </div>
+              <div
+                class="lg:w-1/2 h-64 lg:h-auto bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden relative"
+              >
+                <div
+                  class="absolute inset-0 bg-cover bg-center w-full h-full mix-blend-darken opacity-90"
+                  data-alt="A high-fidelity crop of an ultra-minimalist data dashboard. It features stark white flat cards arranged on a fixed grid over an off-white background. The UI displays clean, clinical charts and data tables utilizing a strict monochrome palette punctuated by small, precise data chips in soft, pastel orange and green. Zero shadows are present."
+                  style="
+                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDYsmzTXv-O_AZ1nOE9fyB9XOp5WRm5xz9VrwXP-UMAu2sVtA4HWMzqGVDm-ZpZbQ8wmPPFBx4hHNalxdxLvqNCpTW-XIShSdErw-6yfNHICro4WN_6_9FhZ54O-FLo-rPBm-PsV3c2O_ugLniJk1NFTfAWAaRqUtEr7fBhnzmAbGw6P3bDyAbkXm5NjC788d7WvIH-0s1SMLmuDFF7c1gYaqz51tnP0OtI6segnKZR7n7w_kr-lUx7yZgO9WU7fUjj8Rz3P39hLJo&quot;);
+                  "
+                ></div>
+              </div>
+            </div>
+            <!-- Feature 4: Monitoring -->
+            <div
+              class="flat-card p-8 md:p-12 rounded-xl flex flex-col justify-between min-h-[400px] lg:col-span-2 border-none bg-primary text-on-primary"
+            >
+              <div class="max-w-2xl">
+                <span
+                  class="inline-block px-3 py-1 bg-dashboard-green/20 text-dashboard-green text-label-sm font-label-sm rounded mb-6"
+                  >ANALYTICS</span
+                >
+                <h3 class="text-headline-lg font-headline-lg mb-4">
+                  Monitoring Efektivitas
+                </h3>
+                <p
+                  class="text-body-md font-body-md text-primary-fixed-dim mb-8"
+                >
+                  Alat evaluasi komprehensif untuk mengukur dampak kebijakan
+                  publik secara objektif berdasarkan KPI yang terdefinisi dengan
+                  jelas.
+                </p>
+              </div>
+              <!-- Minimalist decorative sparkline -->
+              <div
+                class="w-full h-24 mt-auto border-b border-l border-surface-tint relative"
+              >
+                <svg
+                  class="absolute inset-0 w-full h-full"
+                  preserveaspectratio="none"
+                  viewbox="0 0 100 100"
+                >
+                  <polyline
+                    fill="none"
+                    points="0,80 20,60 40,70 60,30 80,40 100,10"
+                    stroke="#93D229"
+                    stroke-width="2"
+                  ></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full py-12 bg-surface-container-low dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline shrink-0 mt-auto"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto gap-gutter"
+      >
+        <div
+          class="text-headline-md font-headline-md font-bold text-primary dark:text-on-surface mb-6 md:mb-0"
+        >
+          EkoJI
+        </div>
+        <nav class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+          <a
+            class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-secondary-fixed-dim transition-colors duration-200"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-secondary-fixed-dim transition-colors duration-200"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-label-sm font-label-sm text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-secondary-fixed-dim transition-colors duration-200"
+            href="#"
+            >Contact Support</a
+          >
+        </nav>
+        <div
+          class="text-body-md font-body-md text-on-surface dark:text-on-surface"
+        >
+          © 2026 EkoJI Public Data Intelligence. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
